@@ -1,0 +1,45 @@
+<head>
+  <meta charset="UTF-8" />
+  <canvas width="600" height="400"></canvas>
+</head>
+<body>
+  <script src="cenario.js"></script>
+  <script src="ator.js"></script>
+  <script src="carros.js"></script>
+  <script src="colisaoRetCirc.js"></script>
+  <audio id="colisao">
+    <source src="sounds/colidiu.mp3" type="audio/mp3" />
+  </audio>
+  <audio id="pontos">
+    <source src="sounds/pontos.wav" type="audio/wav" />
+  </audio>
+  <audio loop id="trilha" autoplay="autoplay">
+    Seu navegador não suporta HTML5
+    <source src="sounds/trilha.mp3" type="audio/mp3" />
+  </audio>
+</body>
+
+<script>
+  //setup
+  let cenario = document.querySelector('canvas')
+  let pincel = cenario.getContext('2d')
+  let estrada = new Image()
+
+  //sons do jogo
+  let trilha = document.getElementById('trilha')
+  let colisao = document.getElementById('colisao')
+  let pontos = document.getElementById('pontos')
+
+  //start
+  function start() {
+    limpaTela()
+    mostraAtor()
+    mostraCarros()
+    moveCarros()
+    checaColisao()
+    marcaPonto()
+  }
+
+  setInterval(start, 1)
+  document.onkeydown = moveAtor
+</script>
